@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#18212f">
+  <meta name="description" content="A simple offline MCQ practice app.">
+  <title>MCQ Practice</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="brand-mark">M</div>
+      <div>
+        <h1>MCQ Practice</h1>
+        <p class="subtitle">Upload a paper. Practise. Check your answers.</p>
+      </div>
+    </header>
+
+    <section id="upload-screen" class="panel">
+      <h2>Start a practice session</h2>
+      <p class="muted">Choose a question paper in JSON format from your phone.</p>
+      <label class="file-picker" for="paper-file">Choose JSON file</label>
+      <input id="paper-file" type="file" accept=".json,application/json">
+      <p id="upload-error" class="error" role="alert"></p>
+      <p class="small muted">Your paper is processed on this device. Nothing is uploaded to a server.</p>
+    </section>
+
+    <section id="quiz-screen" class="hidden">
+      <div class="paper-heading">
+        <div>
+          <p class="eyebrow">CURRENT PAPER</p>
+          <h2 id="paper-title">Practice paper</h2>
+        </div>
+        <p id="question-count" class="counter"></p>
+      </div>
+
+      <article class="panel question-panel">
+        <p id="question-number" class="eyebrow"></p>
+        <h2 id="question-text" class="question-text"></h2>
+        <div id="options" class="options"></div>
+      </article>
+
+      <nav class="question-nav" aria-label="Question navigation">
+        <button id="previous-button" class="button secondary" type="button">Previous</button>
+        <button id="next-button" class="button primary" type="button">Next</button>
+      </nav>
+      <button id="submit-button" class="button submit-button" type="button">Submit paper</button>
+      <p id="answered-count" class="small muted centered"></p>
+    </section>
+
+    <section id="result-screen" class="hidden">
+      <div class="panel result-panel">
+        <p class="eyebrow">SESSION COMPLETE</p>
+        <h2 id="result-title">Your result</h2>
+        <p id="score" class="score"></p>
+        <p id="result-summary" class="muted"></p>
+      </div>
+      <section class="panel comparison-panel">
+        <h2>Answer comparison</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Q.</th>
+                <th>Your answer</th>
+                <th>Correct answer</th>
+                <th>Result</th>
+              </tr>
+            </thead>
+            <tbody id="comparison-body"></tbody>
+          </table>
+        </div>
+      </section>
+      <button id="new-paper-button" class="button primary full-width" type="button">Load another paper</button>
+    </section>
+
+    <footer class="footer">Simple MCQ practice · Works offline after installation</footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
